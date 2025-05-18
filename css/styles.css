@@ -89,6 +89,137 @@ body {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
+header{
+  background:linear-gradient(#290f3a6b, rgba(58, 19, 77, 0.398)), url(../images/shop-portada-4.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100dvh;
+  overflow: hidden;
+  
+}
+
+.navbar-brand{
+  background: linear-gradient(270deg, #074197, #3d0990, #c02e77, #490c98, #2328b8);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+
+#cart-hover:hover{
+background: linear-gradient(270deg,  #1909904d, #442ec053, #150c9867);
+}
+
+#button-nav{
+  border: 2px solid;
+  border-image-slice: 1;
+  overflow: hidden;
+  border-width: 1px;  
+  border-radius: 10px;
+
+}
+
+#border-cards{
+  border: 2px solid;
+  border-image-slice: 1;
+  overflow: hidden;
+  border-width: 1px;  
+  border-radius: 0px;
+  border-image-source: linear-gradient(270deg, #074197, #3d0990, #c02e77, #490c98, #2328b8);
+
+}
+
+#nav-list:hover{
+  background: linear-gradient(270deg, #074197, #3d0990, #c02e77, #490c98, #2328b8);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  
+}
+
+.nav-list{
+  background: linear-gradient(270deg, #074197, #3d0990, #c02e77, #490c98, #2328b8);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+#section-text{
+  background: linear-gradient(270deg, #074197, #3d0990, #c02e77, #490c98, #2328b8);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+
+#title{
+  background: linear-gradient(270deg, #074197, #3d0990, #c02e77, #490c98, #060de2);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+   display: inline-block;
+  font-weight: bold;
+  font-size: 4em;
+}
+
+@media (min-width: 768px) {
+  #title {
+    font-size: 6em;
+  }
+}
+
+#subtitle{
+  background: linear-gradient(270deg, #0d6efd, #6610f2, #d63384, #7914fd, #2025b3);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+  font-size: 1.5em;
+}
+ 
+.checkout-shadow{
+  box-shadow: 0em 7px 15px #731e7e50;
+}
+
+
+#navbar-example1{
+background: linear-gradient(270deg,  #1909904d, #442ec053, #150c9867);
+}
+
+#navbar-example2{
+background: linear-gradient(270deg, #3c098e36, #7e1e4e41, #5a12b93f, #1f24af59);
+}
+
+#grocery{
+background: linear-gradient(270deg, #3c098e36, #7e1e4e41, #5611b23f, #1e23ac59);  
+}
+
+#beauty{
+background: linear-gradient(270deg, #3c098e36, #7e1e4e41, #5b13ba3d, #1b1fac59);
+}
+
+#clothes{
+background: linear-gradient(270deg, #3c098e36, #7e1e4e41, #5811b63f, #171cae59);
+}
+
+.table-cart{
+  background: linear-gradient(270deg, #3c098e36, #7e1e4e41, #5811b63f, #171cae59);
+}
+
+#checkout-body{
+  background: white;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100dvh;
+  overflow: hidden;
+
+}
+
+
+
 hr {
   margin: 1rem 0;
   color: inherit;
@@ -5532,12 +5663,13 @@ textarea.form-control-lg {
   flex-direction: column;
   width: 100%;
   pointer-events: auto;
-  background-color: #fff;
+  background: linear-gradient(270deg, #3c098e36, #7e1e4e41, #5a12b93f, #1f24af59);
   background-clip: padding-box;
   border: 1px solid rgba(0, 0, 0, 0.2);
   border-radius: 0.3rem;
   outline: 0;
 }
+
 
 .modal-backdrop {
   position: fixed;

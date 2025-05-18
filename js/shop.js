@@ -2,7 +2,7 @@
 var products = [
     {
         id: 1,
-        name: 'cooking oil',
+        name: 'Cooking oil',
         price: 10.5,
         type: 'grocery',
         offer: {
@@ -78,34 +78,129 @@ var total = 0;
 function buy(id) {
     // 1. Loop for to the array products to get the item to add to cart
     // 2. Add found product to the cart array
+    const product = products.find(p => p.id === id);
+    if (!product){
+        return;
+    }
+
+    const itemInCart = cart.find(item => item.id === id);
+
+    if (itemInCart){
+        itemInCart.quantity += 1;
+    } else {
+    cart.push({...product, quantity: 1});
+    }
+    
+    
+    printCart();
+    CartCount()
+    }
+
+// Exercise 5 y Exercise 3
+// Calculate total price of the cart using the "cartList" array
+// Fill the shopping cart modal manipulating the shopping cart dom
+function printCart() {
+  const cartList = document.getElementById("cart_list");
+  const totalPrice = document.getElementById("total_price");
+
+  cartList.innerHTML = "";
+  total = 0;
+
+  applyPromotionsCart();
+
+  cart.forEach(product => {
+    const row = document.createElement("tr");
+
+    const nameCell = document.createElement("td");
+    nameCell.textContent = product.name;
+    nameCell.classList.add("w-100")
+
+    const priceCell = document.createElement("td");
+    priceCell.textContent = product.price.toFixed(2) + "$";
+
+    const quantityCell = document.createElement("td");
+    quantityCell.textContent = product.quantity + " ";
+    quantityCell.classList.add("d-flex");
+
+    const plusBtn = document.createElement("button");
+    plusBtn.textContent = "+";
+    plusBtn.classList.add("btn", "btn-sm", "btn-success", "ms-2");
+    plusBtn.onclick = () => buy(product.id);
+
+    const minusBtn = document.createElement("button");
+    minusBtn.textContent = "−";
+    minusBtn.classList.add("btn", "btn-sm", "btn-danger", "ms-1");
+    minusBtn.onclick = () => removeFromCart(product.id);
+
+    quantityCell.appendChild(plusBtn);
+    quantityCell.appendChild(minusBtn);
+
+    const totalCell = document.createElement("td");
+    const subtotal = product.subtotalWithDiscount !== undefined
+      ? product.subtotalWithDiscount
+      : product.price * product.quantity;
+
+    totalCell.textContent = `${subtotal.toFixed(2)} $`;
+
+    total += subtotal;
+
+    row.appendChild(nameCell);
+    row.appendChild(priceCell);
+    row.appendChild(quantityCell);
+    row.appendChild(totalCell);
+
+    cartList.appendChild(row);
+  });
+
+  totalPrice.textContent = `$${total.toFixed(2)}`;
 }
 
+function CartCount() {
+    const countElement = document.getElementById("count_product");
+    const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+    countElement.textContent = totalItems;
+}
+       
 // Exercise 2
 function cleanCart() {
+    cart = [];
+    total = 0;
+    let totalPrice = document.getElementById("total_price");
+    totalPrice.textContent = total.toFixed(2);
+    applyPromotionsCart(cart);
+    printCart();
+    CartCount();
 
-}
-
-// Exercise 3
-function calculateTotal() {
-    // Calculate total price of the cart using the "cartList" array
 }
 
 // Exercise 4
 function applyPromotionsCart() {
-    // Apply promotions to each item in the array "cart"
+    cart.forEach(product => {
+        if (product.offer && product.quantity >= product.offer.number) {
+            const discount = product.price * (product.offer.percent / 100);
+            const discountedPrice = product.price - discount;
+            product.subtotalWithDiscount = discountedPrice * product.quantity;
+        } else {
+            delete product.subtotalWithDiscount;
+        }
+    });
 }
-
-// Exercise 5
-function printCart() {
-    // Fill the shopping cart modal manipulating the shopping cart dom
-}
-
-
-// ** Nivell II **
 
 // Exercise 7
 function removeFromCart(id) {
+  const index = cart.findIndex(product => product.id === id);
 
+  if (index !== -1) {
+    if (cart[index].quantity > 1) {
+      cart[index].quantity -= 1;
+    } else {
+      cart.splice(index, 1); // elimina el producto si la cantidad es 1
+    }
+
+    applyPromotionsCart(); 
+    printCart();           
+    CartCount();           
+  }
 }
 
 function open_modal() {

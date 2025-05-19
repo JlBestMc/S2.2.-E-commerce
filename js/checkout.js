@@ -82,8 +82,8 @@ function validate() {
 
   // Resultado
   if (error > 0) {
-    alert("Hay errores en el formulario.");
+    alert("There are errors in the form.");
   } else {
-    alert("Formulario válido.");
+    alert("Valid form.");
   }
 }

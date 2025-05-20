@@ -1,4 +1,4 @@
-# 📚 Stage 2.2 - E-Commerce
+# 🏪 Sprint 2.2 - E-Commerce
 
 
 ## 🧠 Goals
@@ -63,9 +63,6 @@ npm install
 
 ![Technologie Icons](https://skillicons.dev/icons?i=html,css,bootstrap,js "Technologie Icons")
 
-## 🤝 Contributions
-
-Contributions are welcome. Please follow the [project's guidelines](CONTRIBUTING.md) for submitting changes.
 
 ## ⏳ Project Status
 

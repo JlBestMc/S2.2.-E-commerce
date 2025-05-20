@@ -97,8 +97,8 @@ function buy(id) {
     }
 
 // Exercise 5 y Exercise 3
-// Calculate total price of the cart using the "cartList" array
 // Fill the shopping cart modal manipulating the shopping cart dom
+// Calculate total price of the cart using the "cartList" array
 function printCart() {
   const cartList = document.getElementById("cart_list");
   const totalPrice = document.getElementById("total_price");
@@ -122,18 +122,19 @@ function printCart() {
     quantityCell.textContent = product.quantity + " ";
     quantityCell.classList.add("d-flex");
 
-    const plusBtn = document.createElement("button");
-    plusBtn.textContent = "+";
-    plusBtn.classList.add("btn", "btn-sm", "btn-success", "ms-2");
-    plusBtn.onclick = () => buy(product.id);
-
     const minusBtn = document.createElement("button");
-    minusBtn.textContent = "−";
+    minusBtn.textContent = "-";
     minusBtn.classList.add("btn", "btn-sm", "btn-danger", "ms-1");
     minusBtn.onclick = () => removeFromCart(product.id);
+    
+    const plusBtn = document.createElement("button");
+    plusBtn.textContent = "+";
+    plusBtn.classList.add("btn", "btn-sm", "btn-success", "ms-1");
+    plusBtn.onclick = () => buy(product.id);
 
-    quantityCell.appendChild(plusBtn);
+
     quantityCell.appendChild(minusBtn);
+    quantityCell.appendChild(plusBtn);
 
     const totalCell = document.createElement("td");
     const subtotal = product.subtotalWithDiscount !== undefined
@@ -167,7 +168,7 @@ function cleanCart() {
     total = 0;
     let totalPrice = document.getElementById("total_price");
     totalPrice.textContent = total.toFixed(2);
-    applyPromotionsCart(cart);
+    applyPromotionsCart();
     printCart();
     CartCount();
 
